@@ -11,16 +11,12 @@ const Users = sequelize.define('users', {
 const HistoriesUser = sequelize.define('histories', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     inf: {type: DataTypes.STRING},
+    date: {type: DataTypes.DATE},
 })
 
-const ConnectUserHistories = sequelize.define('connect_user_histories', {
-    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}
-})
-
-Users.belongsToMany(HistoriesUser, {through: ConnectUserHistories});
+Users.hasMany(HistoriesUser);
 
 module.exports = {
     Users,
-    HistoriesUser,
-    ConnectUserHistories
+    HistoriesUser
 }
