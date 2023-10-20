@@ -20,7 +20,7 @@ app.use('/api', router);
 const start = async () => {
     try {
         await sequelize.authenticate();
-        await sequelize.sync(); //cверяет состояние БД со схемой БД
+        await sequelize.sync(); 
         app.listen(PORT, () => {
             console.log(`Server started on port ${PORT}`);
         })

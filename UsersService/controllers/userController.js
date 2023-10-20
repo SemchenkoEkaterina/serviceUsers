@@ -20,13 +20,14 @@ class UserController {
 
 			request.post(
 				{
-					url: 'http://localhost:6000/api/histories',
+					url: process.env.API_HISTORIES_URL,
 					form: {
 						id: newUser[0][0].id,
 						inf: 'Create user',
 					},
 				}
 			);
+			// TODO: добавить транзакционность запросов
 			return res.json(newUser);
 		} catch (error) {
 			next(ApiError.internalServerError(error.message))
@@ -55,13 +56,14 @@ class UserController {
 			});
 			request.post(
 				{
-					url: 'http://localhost:6000/api/histories',
+					url: process.env.API_HISTORIES_URL,
 					form: {
 						id: id,
 						inf: 'Update user',
 					},
 				}
 			);
+			// TODO: добавить транзакционность запросов
 			return res.json(user);
 		} catch (error) {
 			next(ApiError.internalServerError(error.message));
